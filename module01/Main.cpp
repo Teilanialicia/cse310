@@ -2,12 +2,14 @@
 #include "Bank.h"
 
 int main() {
+    // Declare a new bank
     Bank* bank = new Bank();
     double amount;
     char choice;
 
     bank->Deposit(100);
 
+    // Run an infinite loop for the user to make options for as long as they want
     while(1)
     {
 
