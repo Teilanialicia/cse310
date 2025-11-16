@@ -22,7 +22,7 @@ int main() {
         std::cout << "Enter your choice (1-4): ";
         // This will get the user's input of only ONE character
         std::cin>>choice;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.ignore(9999, '\n');
 
         switch (choice)
         {
@@ -35,9 +35,9 @@ int main() {
             std::cin>>amount;
             if (std::cin.fail() || amount <= 0)
             {
-                std::cin.clear(); // reset error flag
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard bad input
-                std::cout << "❌ Invalid amount. Please enter a positive number.\n";
+                std::cin.clear();
+                std::cin.ignore(9999, '\n');
+                std::cout << "Invalid amount. Please enter a positive number.\n";
             }
             else
             {
@@ -50,9 +50,9 @@ int main() {
             std::cin>>amount;
             if (std::cin.fail() || amount <= 0)
             {
-                std::cin.clear(); // reset error flag
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard bad input
-                std::cout << "❌ Invalid amount. Please enter a positive number.\n";
+                std::cin.clear();
+                std::cin.ignore(9999, '\n');
+                std::cout << "Invalid amount. Please enter a positive number.\n";
             }
             else
             {
