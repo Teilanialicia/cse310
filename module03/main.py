@@ -2,12 +2,12 @@ import pygame
 import json
 from Player import Player
 
-# Loads the levels from levels.json
+#1 Loads the levels from levels.json
 def load_levels(path="levels.json"):
   with open(path, "r") as f:
     return json.load(f)
     
-# Gets the current level information from the levels array
+#2 Gets the current level information from the levels array
 def get_level(levels, index):
   level_data = levels[index]
 
@@ -25,32 +25,31 @@ def get_level(levels, index):
 
   return platforms, player_start, end_rect
 
-# Start pygame
+#3 Start pygame
 pygame.init()
 
-# Start the music
+#4 Start the music
 pygame.mixer.init()
-pygame.init()
 
-# Load the background music
+#5 Load the background music
 pygame.mixer.music.load("Nebulite - Breath.mp3")
 pygame.mixer.music.set_volume(0.4)
 pygame.mixer.music.play(-1)
 
-# Set up the screen size
+#6 Set up the screen size
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 
-# Load the levels
+#7 Load the levels
 levels = load_levels()
 current_level = 0
 
-# Set up the level
+#8 Set up the level
 platforms, start, end_rect = get_level(levels, current_level)
 player = Player(start["x"], start["y"])
 
-# Run the game
+#9 Run the game
 running = True
 while running:
   for event in pygame.event.get():
@@ -60,12 +59,11 @@ while running:
   keys = pygame.key.get_pressed()
   player.update(keys, platforms)
 
-  # DRAW
   screen.fill((0, 0, 0))
 
   pygame.draw.rect(screen, (255, 0, 0), player.rect)
 
-  # Check if player touched the end zone
+  #10 Check if player touched the end zone
   if player.rect.colliderect(end_rect):
     current_level += 1
 
@@ -75,7 +73,7 @@ while running:
     platforms, start, end_rect = get_level(levels, current_level)
     player = Player(start["x"], start["y"])
 
-  # Draw everything
+  #11 Draw everything
   for p in platforms:
     pygame.draw.rect(screen, (0, 255, 0), p)
 
